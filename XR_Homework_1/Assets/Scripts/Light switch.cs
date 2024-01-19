@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Light light;
+public class LightSwitch : MonoBehaviour
 {
+    private Light light;
+
     void Start()
     {
         light = GetComponent<Light>();
 
-        if (Input.getKeyDown("tab"))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            light.color = blue;
+            light.color = Color.blue;
         }
     }
 }
