@@ -9,8 +9,11 @@ public class LightSwitch : MonoBehaviour
     void Start()
     {
         light = GetComponent<Light>();
+    }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+    void Update()
+    {
+        if (Input.GetKeyDown("tab"))
         {
             light.color = Color.blue;
         }
