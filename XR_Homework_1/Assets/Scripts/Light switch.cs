@@ -13,7 +13,7 @@ public class LightSwitch : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("tab"))
+        if (Input.GetKeyDown("Controller/Trigger"))
         {
             light.color = Color.blue;
         }
