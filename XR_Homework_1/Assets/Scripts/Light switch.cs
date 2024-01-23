@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightSwitch : MonoBehaviour
 {
-    private Light light;
+    public Light light;
 
     void Start()
     {

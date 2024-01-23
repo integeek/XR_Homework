@@ -15,7 +15,7 @@ public class Breakout : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("Controller/Trigger"))
+        if (Input.GetKeyDown("Controller/PrimaryButton"))
         {
             ToggleView();
         }
