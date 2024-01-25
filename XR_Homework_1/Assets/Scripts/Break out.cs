@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Breakout : MonoBehaviour
 {
     public Transform internalRoom;
     public Transform externalRoom;
+    public InputActionReference action;
     private bool onTheRoom = true;
 
     void Start()
     {
         SetInternalView();
+        action.action.Enable();
+        action.action.performed += OnActionPerformed;
     }
 
-    void Update()
+    void OnActionPerformed(InputAction.CallbackContext ctx)
     {
-        if (Input.GetKeyDown("Controller/PrimaryButton"))
+        if (ctx.ReadValueAsButton())
         {
             ToggleView();
         }
@@ -46,4 +50,13 @@ public class Breakout : MonoBehaviour
         transform.rotation = externalRoom.rotation;
         onTheRoom = false;
     }
+
+    void OnDisable()
+    {
+        if (action != null && action.action != null)
+        {
+            action.action.Disable();
+        }
+    }
 }
+

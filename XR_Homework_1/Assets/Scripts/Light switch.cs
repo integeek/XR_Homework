@@ -1,21 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class LightSwitch : MonoBehaviour
 {
-    public Light light;
+    public Light pointLight;
+    public InputActionReference action;
+
 
     void Start()
     {
-        light = GetComponent<Light>();
+        pointLight = GetComponent<Light>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown("Controller/Trigger"))
+        action.action.Enable();
+        action.action.performed += (ctx) =>
         {
-            light.color = Color.blue;
-        }
+            if (pointLight.color == Color.white)
+            {
+                pointLight.color = Color.blue;
+            }
+            else 
+            {
+                pointLight.color = Color.white;
+            }
+        };
     }
 }
