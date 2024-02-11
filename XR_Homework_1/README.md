@@ -7,3 +7,4 @@ To switch to the outside point of view, press the secondary button of the right 
 Bonus : 
 I created a home with walls and a roof. I added textures to all the element.
 In the room, I created a staircase and an another floor.
+

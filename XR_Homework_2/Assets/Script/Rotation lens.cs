@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotationlens : MonoBehaviour
+public class MagnifyingLens : MonoBehaviour
 {
-    public Transform playerCamera; 
+    public Camera magnifyingCamera;
+    public Transform playerCamera;
 
-    void LateUpdate()
+
+    void Update()
     {
-        transform.position = playerCamera.position;
-        transform.rotation = Quaternion.Euler(0f, playerCamera.eulerAngles.y, 0f); 
+        Quaternion playerRotation = playerCamera.rotation;
+        magnifyingCamera.transform.rotation = playerRotation;
     }
 }
+
