@@ -8,3 +8,4 @@ Bonus :
 I created a home with walls and a roof. I added textures to all the element.
 In the room, I created a staircase and an another floor.
 
+![](https://github.com/integeek/XR_Homework/blob/main/XR_Homework_1/Ambre%20Giraud-Lanza%20HW1%20video.gif)
