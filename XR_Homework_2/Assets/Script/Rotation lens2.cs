@@ -9,13 +9,10 @@ public class Rotationlens2 : MonoBehaviour
 
     void Update()
     {
+        Vector3 localPlayer = lens.InverseTransformPoint(cameraPlayer.position);
+        transform.position = lens.TransformPoint(new Vector3(localPlayer.x, localPlayer.y, localPlayer.z));
 
-
-        /* 
-        Vector3 directionToCamera = cameraPlayer.position - lens.position;
-        Vector3 mirroredDirection = Vector3.Reflect(directionToCamera, lens.up);
-        transform.position = lens.position;
-        transform.rotation = Quaternion.LookRotation(mirroredDirection, lens.up);
-        */
+        Vector3 lookatmirror = lens.TransformPoint(new Vector3(-localPlayer.x, -localPlayer.y, -localPlayer.z));
+        transform.LookAt(lookatmirror, lens.up);
     }
 }
