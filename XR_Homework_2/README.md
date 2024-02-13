@@ -8,4 +8,4 @@ Chest are hidden bellow the message on the wall and money is hidden on the left 
 
 
 
-![](https://github.com/integeek/XR_Homework/blob/main/XR_Homework_1/Ambre%20Giraud-Lanza%20HW1%20video.gif)
+![](https://github.com/integeek/XR_Homework/blob/main/XR_Homework_1/HW2%Ambre%20Giraudlanza%%20video.gif)
