@@ -48,7 +48,9 @@ public class CustomGrab : MonoBehaviour
                 Quaternion deltaRotation = Quaternion.Inverse(initialRotation) * transform.rotation;
 
                 grabbedObject.position += deltaPosition;
-                grabbedObject.rotation = deltaRotation * grabbedObject.rotation;
+
+                Quaternion newRotation = deltaRotation * grabbedObject.rotation;
+                grabbedObject.rotation = newRotation;           
             }
         }
         // If let go of button, release object
