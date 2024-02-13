@@ -10,8 +10,7 @@ public class Rotationlens2 : MonoBehaviour
     void Update()
     {
         Vector3 localPlayer = lens.InverseTransformPoint(cameraPlayer.position);
-        transform.position = lens.TransformPoint(new Vector3(localPlayer.x, localPlayer.y, localPlayer.z));
-
+        transform.position = lens.position;
         Vector3 lookatmirror = lens.TransformPoint(new Vector3(-localPlayer.x, -localPlayer.y, -localPlayer.z));
         transform.LookAt(lookatmirror, lens.up);
     }
