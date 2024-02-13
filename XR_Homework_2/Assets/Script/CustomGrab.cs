@@ -45,7 +45,7 @@ public class CustomGrab : MonoBehaviour
                 // Save the position and rotation at the end of Update function, so you can compare previous pos/rot to current here
 
                 Vector3 deltaPosition = transform.position - initialPosition;
-                Quaternion deltaRotation = Quaternion.Inverse(initialRotation) * transform.rotation;
+                Quaternion deltaRotation = transform.rotation * Quaternion.Inverse(initialRotation);
 
                 grabbedObject.position += deltaPosition;
 
