@@ -8,6 +8,10 @@ TagManager:
   - Water
   - Projectile
   - Knife
+  - Ground
+  - Surface
+  - Tomato
+  - Cheese
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class SliceMushroom : MonoBehaviour
 {
 public GameObject objectToSlice; 
-    public GameObject slicePrefab; 
+public GameObject slicePrefab; 
 /*
     private void Update()
     {

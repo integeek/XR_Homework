@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit; 
 
 public class SliceEgg : MonoBehaviour
 {
     public float breakSpeedThreshold = 1.0f; // Seuil de vitesse pour la casse de l'œuf
     public GameObject cookedEggPrefab; // Préfabriqué de l'œuf cuit
+    public float spawnOffset = 0.1f; // Décalage vertical pour éviter le clipping
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -19,7 +21,12 @@ public class SliceEgg : MonoBehaviour
             if (collisionSpeed >= breakSpeedThreshold)
             {
                 // Instancier l'œuf cuit à la position de l'œuf cru
-                Instantiate(cookedEggPrefab, transform.position, Quaternion.identity);
+                GameObject cookedEgg = Instantiate(cookedEggPrefab, transform.position, Quaternion.identity);
+                // Ajouter un Rigidbody à l'œuf cuit
+                Rigidbody cookedEggRigidbody = cookedEgg.AddComponent<Rigidbody>();
+                cookedEggRigidbody.isKinematic = true;
+                cookedEggRigidbody.useGravity = true;                
+                cookedEgg.AddComponent<XRGrabInteractable>();
 
                 // Détruire l'œuf cru
                 Destroy(gameObject);
