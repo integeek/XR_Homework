@@ -16,7 +16,7 @@ public class SliceEgg : MonoBehaviour
         {
             // Calculer la vitesse de l'œuf lors de la collision
             float collisionSpeed = collision.relativeVelocity.magnitude;
-            Debug.Log("Vitesse de l'œuf : " + collisionSpeed);
+            //Debug.Log("Vitesse de l'œuf : " + collisionSpeed);
             // Déterminer si l'œuf doit se casser en fonction de sa vitesse
             if (collisionSpeed >= breakSpeedThreshold)
             {

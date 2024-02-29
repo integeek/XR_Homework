@@ -43,6 +43,10 @@ public class SliceTomato : MonoBehaviour
             leftSlice.AddComponent<XRGrabInteractable>();
             rightSlice.AddComponent<XRGrabInteractable>();
 
+            leftSlice.AddComponent<BoxCollider>();
+            rightSlice.AddComponent<BoxCollider>();
+
+
             Destroy(objectToSlice);
     }
     }
