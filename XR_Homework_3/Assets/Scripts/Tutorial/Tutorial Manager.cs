@@ -6,8 +6,9 @@ using System.Collections.Generic;
 public class TutorialManager : MonoBehaviour
 {
     public List<TutorialMessage> tutorialMessages;
-    public TMP_Text messageText; // Utilisation de TMP_Text au lieu de TextMeshProUGUI
+    public TMP_Text messageText; 
     public Button okButton;
+    public Button goButton; 
 
     private int currentIndex = 0;
 
@@ -26,6 +27,16 @@ public class TutorialManager : MonoBehaviour
         if (currentIndex < tutorialMessages.Count)
         {
             messageText.text = tutorialMessages[currentIndex].text;
+
+            // Afficher le bouton "Go" seulement lors du dernier message
+            if (currentIndex == tutorialMessages.Count - 1)
+            {
+                goButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                goButton.gameObject.SetActive(false);
+            }
         }
         else
         {
@@ -38,6 +49,11 @@ public class TutorialManager : MonoBehaviour
     {
         currentIndex++;
         ShowCurrentMessage();
+    }
+
+    public void OnGoButtonClick()
+    {
+        SceneTransitionManager.singleton.GoToSceneAsync(1); // Remplacez 1 par l'index ou le nom de votre scène de tutoriel
     }
 }
 

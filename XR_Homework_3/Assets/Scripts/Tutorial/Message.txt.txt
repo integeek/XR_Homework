@@ -1,15 +1,9 @@
 Welcome to your new kitchen
-
 Use the left joystick to move yourself and the right joystick to move the camera
-
 Use the trigger to grab 
 
-Your first order is to make a sandwich. 
-For that, take a piece of bread and put it on the plate. Use the knife to cut a tomato and take a piece of bacon. 
-Close it with bread
+Your first order is to make a sandwich. For that, take a piece of bread and put it on the plate. Use the knife to cut a tomato and take a piece of bacon. Close it with bread
 
-Your second order is to make a pizza.
-Put in the microwave a piece of cheese, an entire tomato and a piece of bread
+Your second order is to make a pizza. Put in the microwave a piece of cheese, an entire tomato and a piece of bread
 
-You have also to make fried eggs. But there is no egg in the fridge. 
-Click on the button to go get some.
+You have also to make fried eggs. But there is no egg in the fridge. Click on the button to go get some.
