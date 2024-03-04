@@ -34,13 +34,6 @@ public GameObject slicePrefab;
             float offset = 0.05f; 
             GameObject leftSlice = Instantiate(slicePrefab, objectPosition + Vector3.left * offset, Quaternion.identity);
             GameObject rightSlice = Instantiate(slicePrefab, objectPosition + Vector3.right * offset, Quaternion.identity);
-
-            leftSlice.AddComponent<Rigidbody>().useGravity = true;
-            rightSlice.AddComponent<Rigidbody>().useGravity = true;
-
-            leftSlice.AddComponent<XRGrabInteractable>();
-            rightSlice.AddComponent<XRGrabInteractable>();
-
             Destroy(objectToSlice);
     }
     }
