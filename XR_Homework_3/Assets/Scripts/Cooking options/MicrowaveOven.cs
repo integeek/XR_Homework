@@ -1,39 +1,71 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
-using System.Collections;
 
-public class PizzaTransformation : MonoBehaviour
+public class MicrowaveOven : MonoBehaviour
 {
-    public GameObject pizza;
+    public string tagTomate = "Tomate";
+    public string tagFromage = "Fromage";
+    public GameObject pizzaPrefab;
+    public Transform spawnPoint; // Point de spawn pour la pizza
 
-    public void TransformToPizza()
+    private bool hasTomate = false;
+    private bool hasFromage = false;
+
+    // Méthode appelée lorsque le bouton est pressé
+    public void ButtonPressed()
     {
-        GameObject[] tomatoes = GameObject.FindGameObjectsWithTag("Tomato");
-        GameObject[] cheeses = GameObject.FindGameObjectsWithTag("Cheese");
+        TryMakePizza();
+    }
 
-        if (tomatoes.Length > 0 && cheeses.Length > 0)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(tagTomate))
         {
-            StartCoroutine(TransformCoroutine(tomatoes, cheeses));
+            hasTomate = true;
+        }
+        else if (other.CompareTag(tagFromage))
+        {
+            hasFromage = true;
         }
     }
 
-    IEnumerator TransformCoroutine(GameObject[] tomatoes, GameObject[] cheeses)
+    private void OnTriggerExit(Collider other)
     {
-        // Masquer les tomates et le fromage
-        foreach (GameObject tomato in tomatoes)
+        if (other.CompareTag(tagTomate))
         {
-            tomato.SetActive(false);
+            hasTomate = false;
         }
-
-        foreach (GameObject cheese in cheeses)
+        else if (other.CompareTag(tagFromage))
         {
-            cheese.SetActive(false);
+            hasFromage = false;
         }
+    }
 
-        // Attendre une seconde
-        yield return new WaitForSeconds(1f);
+    private void TryMakePizza()
+    {
+        if (hasTomate && hasFromage)
+        {
+            // Créer la pizza en utilisant le prefab et la position du point de spawn
+            Instantiate(pizzaPrefab, spawnPoint.position, Quaternion.identity);
 
-        // Afficher la pizza
-        pizza.SetActive(true);
+            // Détruire les aliments présents dans le four à micro-ondes
+            DestroyAllFood();
+
+            // Remettre les états des aliments à faux pour la prochaine utilisation
+            hasTomate = false;
+            hasFromage = false;
+        }
+    }
+
+    private void DestroyAllFood()
+    {
+        // Rechercher tous les aliments dans le four à micro-ondes et les détruire
+        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag(tagTomate) || collider.CompareTag(tagFromage))
+            {
+                Destroy(collider.gameObject);
+            }
+        }
     }
 }

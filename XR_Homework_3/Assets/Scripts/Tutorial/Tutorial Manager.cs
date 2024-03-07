@@ -15,8 +15,8 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         tutorialMessages = new List<TutorialMessage>();
-        tutorialMessages.Add(new TutorialMessage("Welcome to your new kitchen.\nUse the left joystick to move yourself and the right joystick to move the camera.\nUse the trigger to grab "));
-        tutorialMessages.Add(new TutorialMessage("Your first order is to make a sandwich.\nFor that, take a piece of bread and put it on the plate.\nUse the knife to cut a tomato and take a piece of bacon.\nClose it with bread."));
+        tutorialMessages.Add(new TutorialMessage("Welcome to your new kitchen.\nUse the left joystick to move yourself and the right joystick to move the camera.\nUse the trigger to grab and the Y button to reset the kitchen "));
+        tutorialMessages.Add(new TutorialMessage("Your first order is to make a sandwich.\nFor that, look the recipe next to the sandwich maker on the table. \nOpen the fridge to find the ingredients and use the knife to cut. \nWhen the sandwich is finish, press the button next to the plate to validate it."));
         tutorialMessages.Add(new TutorialMessage("Your second order is to make a pizza.\nPut in the microwave a piece of cheese, an entire tomato and a piece of bread"));
         tutorialMessages.Add(new TutorialMessage("You have also to make fried eggs.\nBut there is no egg in the fridge.\nClick on the button to go get some."));
         ShowCurrentMessage();
