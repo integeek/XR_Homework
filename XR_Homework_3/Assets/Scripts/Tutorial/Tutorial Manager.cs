@@ -7,8 +7,7 @@ public class TutorialManager : MonoBehaviour
 {
     public List<TutorialMessage> tutorialMessages;
     public TMP_Text messageText; 
-    public Button okButton;
-    public Button goButton; 
+    //public Button okButton;
 
     private int currentIndex = 0;
 
@@ -17,43 +16,29 @@ public class TutorialManager : MonoBehaviour
         tutorialMessages = new List<TutorialMessage>();
         tutorialMessages.Add(new TutorialMessage("Welcome to your new kitchen.\nUse the left joystick to move yourself and the right joystick to move the camera.\nUse the trigger to grab and the Y button to reset the kitchen "));
         tutorialMessages.Add(new TutorialMessage("Your first order is to make a sandwich.\nFor that, look the recipe next to the sandwich maker on the table. \nOpen the fridge to find the ingredients and use the knife to cut. \nWhen the sandwich is finish, press the button next to the plate to validate it."));
-        tutorialMessages.Add(new TutorialMessage("Your second order is to make a pizza.\nPut in the microwave a piece of cheese, an entire tomato and a piece of bread"));
-        tutorialMessages.Add(new TutorialMessage("You have also to make fried eggs.\nBut there is no egg in the fridge.\nClick on the button to go get some."));
+        tutorialMessages.Add(new TutorialMessage("Your second order is to make a pizza.\nPut in the microwave a piece of cheese, a tomato slice, a mushroom slice, a piece of bacon and a piece of bread.\nDo not hesitate to look at the recipe next to the microwave."));
+        tutorialMessages.Add(new TutorialMessage("Your last order is to make a pie in the oven. \nPut in the oven a plate, an entire apple and an egg a broken egg. \nYou can look at the recipe in the wall"));
         ShowCurrentMessage();
     }
 
     void ShowCurrentMessage()
+{
+    if (currentIndex < tutorialMessages.Count)
     {
-        if (currentIndex < tutorialMessages.Count)
-        {
-            messageText.text = tutorialMessages[currentIndex].text;
-
-            // Afficher le bouton "Go" seulement lors du dernier message
-            if (currentIndex == tutorialMessages.Count - 1)
-            {
-                goButton.gameObject.SetActive(true);
-            }
-            else
-            {
-                goButton.gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            // Si tous les messages ont été affichés, désactiver le Canvas ou faire autre chose
-            gameObject.SetActive(false);
-        }
+        messageText.text = tutorialMessages[currentIndex].text;
     }
+    else
+    {
+        // Si tous les messages ont été affichés, désactiver le Canvas ou faire autre chose
+        gameObject.SetActive(false);
+    }
+}
+
 
     public void OnOkButtonClick()
     {
         currentIndex++;
         ShowCurrentMessage();
-    }
-
-    public void OnGoButtonClick()
-    {
-        SceneTransitionManager.singleton.GoToSceneAsync(1); // Remplacez 1 par l'index ou le nom de votre scène de tutoriel
     }
 }
 

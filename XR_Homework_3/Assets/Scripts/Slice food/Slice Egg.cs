@@ -22,11 +22,6 @@ public class SliceEgg : MonoBehaviour
             {
                 // Instancier l'œuf cuit à la position de l'œuf cru
                 GameObject cookedEgg = Instantiate(cookedEggPrefab, transform.position, Quaternion.identity);
-                // Ajouter un Rigidbody à l'œuf cuit
-                Rigidbody cookedEggRigidbody = cookedEgg.AddComponent<Rigidbody>();
-                cookedEggRigidbody.isKinematic = true;
-                cookedEggRigidbody.useGravity = true;                
-                cookedEgg.AddComponent<XRGrabInteractable>();
 
                 // Détruire l'œuf cru
                 Destroy(gameObject);

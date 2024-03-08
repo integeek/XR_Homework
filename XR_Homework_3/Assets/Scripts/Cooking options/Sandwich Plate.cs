@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class SandwichPlate : MonoBehaviour
 {
-    public List<string> ordreAttendu = new List<string>() {"bread", "tomato", "cheese", "bread"}; // Liste de l'ordre attendu des aliments dans le sandwich
+    public List<string> ordreAttendu = new List<string>() {"bread", "tomatoslice", "cheese", "bread"}; // Liste de l'ordre attendu des aliments dans le sandwich
     public List<Transform> alimentsEmpiles = new List<Transform>(); // Liste des aliments empilés
     public Transform pointDeSpawn; // Point de spawn pour les aliments
 

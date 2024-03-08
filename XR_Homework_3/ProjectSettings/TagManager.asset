@@ -15,6 +15,12 @@ TagManager:
   - Bread
   - Mushroom
   - Button
+  - Bacon
+  - Tomatoslice
+  - Mushroomslice
+  - Eggcooked
+  - Plate
+  - Apple
   layers:
   - Default
   - TransparentFX
