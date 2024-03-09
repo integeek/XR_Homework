@@ -21,6 +21,9 @@ TagManager:
   - Eggcooked
   - Plate
   - Apple
+  - Sandwich
+  - Pizza
+  - Pie
   layers:
   - Default
   - TransparentFX

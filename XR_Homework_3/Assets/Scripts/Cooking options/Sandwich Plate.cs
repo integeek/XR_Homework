@@ -1,79 +1,83 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 using System.Collections.Generic;
 
 public class SandwichPlate : MonoBehaviour
 {
-    public List<string> ordreAttendu = new List<string>() {"bread", "tomatoslice", "cheese", "bread"}; // Liste de l'ordre attendu des aliments dans le sandwich
-    public List<Transform> alimentsEmpiles = new List<Transform>(); // Liste des aliments empilés
-    public Transform pointDeSpawn; // Point de spawn pour les aliments
+    public List<string> ordreAttendu = new List<string>() { "bread", "tomatoslice", "cheese", "bread" };
+    public List<Transform> alimentsEmpiles = new List<Transform>();
+    public Transform pointDeSpawn;
+    public GameObject sandwichContainer;
 
-    private int indexProchainAliment = 0; // Index de l'aliment attendu dans l'ordre
+    private int indexProchainAliment = 0;
+    private XRGrabInteractable sandwichGrabInteractable;
 
-   private void OnTriggerEnter(Collider other)
-{
-    // Vérifier si l'objet en collision a la layer "Aliment"
-    if (other.gameObject.layer == LayerMask.NameToLayer("Aliment"))
+    private void Start()
     {
-        // Récupérer le tag de l'aliment en minuscules
-        string tagAliment = other.gameObject.tag.ToLower();
+        // Récupérer le composant XRGrabInteractable du conteneur du sandwich
+        sandwichGrabInteractable = sandwichContainer.GetComponent<XRGrabInteractable>();
 
-        // Vérifier si tous les aliments attendus ont déjà été empilés
-        if (indexProchainAliment >= ordreAttendu.Count)
+        // Désactiver le composant XRGrabInteractable du conteneur du sandwich initialement
+        sandwichGrabInteractable.enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Aliment"))
         {
-            Debug.Log("Tous les aliments attendus ont déjà été empilés !");
-            return;
-        }
+            string tagAliment = other.gameObject.tag.ToLower();
 
-        // Vérifier si l'aliment correspond à l'aliment attendu dans l'ordre en minuscules
-        if (tagAliment == ordreAttendu[indexProchainAliment])
-        {
-            // Ajouter l'aliment à la liste des aliments empilés
-            alimentsEmpiles.Add(other.transform);
-
-            // Mettre l'aliment sur l'assiette
-            other.transform.parent = transform;
-
-            // Normaliser l'orientation de l'aliment
-            other.transform.rotation = Quaternion.identity;
-
-            // Désactiver la gravité et le rigidbody pour éviter les problèmes de physique
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            if (rb != null)
+            if (indexProchainAliment >= ordreAttendu.Count)
             {
-                rb.isKinematic = true;
+                Debug.Log("Tous les aliments attendus ont déjà été empilés !");
+                return;
             }
 
-            // Mise à jour de la position pour empiler visuellement l'aliment
-            UpdateAlimentPosition(other.transform);
+            if (tagAliment == ordreAttendu[indexProchainAliment])
+            {
+                alimentsEmpiles.Add(other.transform);
+                other.transform.parent = sandwichContainer.transform;
+                other.transform.rotation = Quaternion.identity;
 
-            // Incrémenter l'index de l'aliment attendu dans l'ordre
-            indexProchainAliment++;
-        }
-        else
-        {
-            // L'aliment ne correspond pas à l'aliment attendu dans l'ordre, donc ne pas l'ajouter au sandwich
-            Debug.Log("Cet aliment n'est pas dans le bon ordre !");
+                // Désactiver le composant XR Grab Interactable de l'aliment
+                XRGrabInteractable grabInteractable = other.GetComponent<XRGrabInteractable>();
+                if (grabInteractable != null)
+                {
+                    grabInteractable.enabled = false;
+                }
+
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                }
+
+                UpdateAlimentPosition(other.transform);
+                indexProchainAliment++;
+
+                if (indexProchainAliment >= ordreAttendu.Count)
+                {
+                    // Activer le collider du sandwich entier pour permettre de le prendre
+                    sandwichGrabInteractable.enabled = true;
+                }
+            }
+            else
+            {
+                Debug.Log("Cet aliment n'est pas dans le bon ordre !");
+            }
         }
     }
-}
 
-
-private void UpdateAlimentPosition(Transform aliment)
+    private void UpdateAlimentPosition(Transform aliment)
     {
-        // Calculer la hauteur de l'empilement des aliments
         float hauteurEmpilement = 0f;
         foreach (Transform a in alimentsEmpiles)
         {
             hauteurEmpilement += a.GetComponent<Renderer>().bounds.size.y;
         }
 
-        // Placer l'aliment sur l'assiette à une hauteur appropriée
         Vector3 newPosition = transform.position;
-
-        // La position Y de l'aliment est la position Y de l'assiette plus la hauteur de l'empilement
         newPosition.y += hauteurEmpilement;
-
-        // Déplacer l'aliment sur l'assiette pour commencer l'empilement
         aliment.position = newPosition;
     }
 }
