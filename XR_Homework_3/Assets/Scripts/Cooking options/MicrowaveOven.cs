@@ -9,7 +9,7 @@ public class MicrowaveOven : MonoBehaviour
     public string tagBread = "Bread";
 
     public GameObject pizzaPrefab;
-    public Transform spawnPoint; // Point de spawn pour la pizza
+    public Transform spawnPoint; 
 
     private bool hasTomate = false;
     private bool hasFromage = false;
@@ -18,7 +18,6 @@ public class MicrowaveOven : MonoBehaviour
     private bool hasBread = false;
 
 
-    // Méthode appelée lorsque le bouton est pressé
     public void ButtonPressed()
     {
         TryMakePizza();
@@ -76,13 +75,10 @@ public class MicrowaveOven : MonoBehaviour
     {
         if (hasTomate && hasFromage && hasMushroom && hasBacon && hasBread)
         {
-            // Créer la pizza en utilisant le prefab et la position du point de spawn
             Instantiate(pizzaPrefab, spawnPoint.position, Quaternion.identity);
 
-            // Détruire les aliments présents dans le four à micro-ondes
             DestroyAllFood();
 
-            // Remettre les états des aliments à faux pour la prochaine utilisation
             hasTomate = false;
             hasFromage = false;
             hasMushroom = false; 
@@ -93,7 +89,6 @@ public class MicrowaveOven : MonoBehaviour
 
     private void DestroyAllFood()
     {
-        // Rechercher tous les aliments dans le four à micro-ondes et les détruire
         Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2);
         foreach (Collider collider in colliders)
         {

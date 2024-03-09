@@ -467,7 +467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Overcooked
+  m_text: Cooking simulator
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7a5e2d89139b2940a46b4a7c3289c9e, type: 2}
   m_sharedMaterial: {fileID: -3542977905639664755, guid: d7a5e2d89139b2940a46b4a7c3289c9e,
@@ -495,8 +495,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -598,8 +598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 3.8}
-  m_SizeDelta: {x: 25.5979, y: 5}
+  m_AnchoredPosition: {x: 0, y: 3}
+  m_SizeDelta: {x: 41.12, y: 5.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &256391882
 GameObject:
@@ -4178,8 +4178,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This game is a kitchen game where you have to realise different dishes
+  m_text: 'This game is a kitchen game where you have to realise different dishes
     for customers
+
+    XR HW3 by Ambre Giraud-Lanza'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5b036e831c0c90547b32a8a896d80f79, type: 2}
   m_sharedMaterial: {fileID: 6988543560108305873, guid: cb4516ac98eb5854ea4d7a8f558eb4da,
@@ -5348,7 +5350,7 @@ Transform:
   m_GameObject: {fileID: 7313654229957926047}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

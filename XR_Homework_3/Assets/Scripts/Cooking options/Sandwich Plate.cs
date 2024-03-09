@@ -14,10 +14,8 @@ public class SandwichPlate : MonoBehaviour
 
     private void Start()
     {
-        // Récupérer le composant XRGrabInteractable du conteneur du sandwich
         sandwichGrabInteractable = sandwichContainer.GetComponent<XRGrabInteractable>();
 
-        // Désactiver le composant XRGrabInteractable du conteneur du sandwich initialement
         sandwichGrabInteractable.enabled = false;
     }
 
@@ -39,7 +37,6 @@ public class SandwichPlate : MonoBehaviour
                 other.transform.parent = sandwichContainer.transform;
                 other.transform.rotation = Quaternion.identity;
 
-                // Désactiver le composant XR Grab Interactable de l'aliment
                 XRGrabInteractable grabInteractable = other.GetComponent<XRGrabInteractable>();
                 if (grabInteractable != null)
                 {
@@ -57,7 +54,6 @@ public class SandwichPlate : MonoBehaviour
 
                 if (indexProchainAliment >= ordreAttendu.Count)
                 {
-                    // Activer le collider du sandwich entier pour permettre de le prendre
                     sandwichGrabInteractable.enabled = true;
                 }
             }
